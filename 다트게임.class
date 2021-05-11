@@ -1,0 +1,44 @@
+class Solution {
+    public int solution(String dartResult) {
+        int answer = 0;
+        char []dart=dartResult.toCharArray();
+        int []sums=new int[(dart.length/2)+1];
+        int sumIdx=0;
+        for(int i=0;i<dart.length;i++){
+            switch(dart[i]){
+                case '#':
+                    sums[sumIdx-1]*=-1;
+                    break;
+                case '*':
+                    if(sumIdx==1)
+                       sums[sumIdx-1]*=2;
+                    else{
+                        sums[sumIdx-2]*=2;
+                        sums[sumIdx-1]*=2;
+                    }
+                    break;
+                case 'S':
+                    sumIdx++;
+                    break;
+                case 'D':
+                    sums[sumIdx]*=sums[sumIdx];
+                    sumIdx++;
+                    break;
+                case 'T':
+                    sums[sumIdx]*=sums[sumIdx]*sums[sumIdx];
+                    sumIdx++;
+                    break;  
+                default: //숫자일경우
+                    if(dart[i+1]=='0')
+                        sums[sumIdx]=10;
+                    else
+                        sums[sumIdx]+=Character.getNumericValue(dart[i]);
+                    break;
+            }
+            
+        }
+        for(int i=0;i<sums.length;i++)
+            answer+=sums[i];
+        return answer;
+    }
+}
