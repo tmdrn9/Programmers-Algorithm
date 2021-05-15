@@ -1,0 +1,34 @@
+import java.util.*;
+class Solution {
+    public int[] solution(int[] answers) {
+        int[] one={1,2,3,4,5};
+        int[] two={2,1,2,3,2,4,2,5};
+        int[] three={3,3,1,1,2,2,4,4,5,5};
+        int[] cnt={0,0,0};
+
+        for(int i=0;i<answers.length;i++){
+            if(one[i%one.length]==answers[i])
+                cnt[0]++;
+            if(two[i%two.length]==answers[i])
+                cnt[1]++;
+            if(three[i%three.length]==answers[i])
+                cnt[2]++;
+        }
+
+        int maxx=Math.max(Math.max(cnt[0],cnt[1]),Math.max(cnt[1],cnt[2]));
+
+        int n=0;
+        int[] index={0,0,0};
+
+        for(int j=0;j<3;j++){
+            if(maxx==cnt[j])
+                index[n++]=j+1;
+        }
+
+        int[] answer = new int[n];
+        for(int a=0;a<n;a++)
+            answer[a]=index[a];
+
+        return answer;
+    }
+}
