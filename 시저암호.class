@@ -1,0 +1,24 @@
+class Solution {
+    public String solution(String s, int n) {
+        String answer = "";
+        for(int i=0;i<s.length();i++){
+            char temp=s.charAt(i);
+            if(temp==' '){
+                answer+=temp;
+                continue;
+            }
+            if(Character.isUpperCase(temp)){
+                temp+=n;
+                if(temp>90)
+                    temp-=26;
+            }
+            else{
+                temp+=n;
+                if(temp>122)
+                    temp-=26;
+            }
+            answer+=temp;
+        }
+        return answer;
+    }
+}
