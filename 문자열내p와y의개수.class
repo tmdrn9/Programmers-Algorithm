@@ -1,0 +1,18 @@
+class Solution {
+    boolean solution(String s) {
+        boolean answer = true;
+        int Pcnt=0;
+        int Ycnt=0;
+        char[] arr=s.toCharArray();
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]=='p'||arr[i]=='P')
+                Pcnt++;
+            else if(arr[i]=='y'||arr[i]=='Y')
+                Ycnt++;
+        }
+        if(Ycnt!=Pcnt)
+            answer=false;
+
+        return answer;
+    }
+}
