@@ -8,4 +8,5 @@ def solution(numbers):
     str_li=list(map(str,numbers))
     str_li.sort(key=lambda x: (x * 4)[:4], reverse=True) 
     #numbers의 원소의 최대 자리수가 4개이기때문에 *4하고 4자리수까지 끊기
-    return "".join(str_li)
+    answer=str(int("".join(str_li)))
+    return answer
